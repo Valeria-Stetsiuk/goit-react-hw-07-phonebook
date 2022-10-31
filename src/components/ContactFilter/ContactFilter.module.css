@@ -1,0 +1,19 @@
+.inputFilter {
+  border: 1px solid #c5c5c5;
+  width: 288px;
+  height: 40px;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+.inputFilter:hover,
+.inputFilter:focus {
+  outline: 3px solid rgb(96, 110, 218);
+}
+.label {
+  display: block;
+
+  font-size: 18px;
+  font-weight: 500;
+  margin: 20px auto;
+  width: 288px;
+}

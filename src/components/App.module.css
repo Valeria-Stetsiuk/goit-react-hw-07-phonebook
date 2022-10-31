@@ -1,0 +1,9 @@
+.Contacts{
+display: block;
+    height: 300px;
+    width: 300px;
+    background: #f4f4f4;
+    border: 1px solid #c5c5c5;
+    border-radius: 6px;
+    padding: 25px;
+}

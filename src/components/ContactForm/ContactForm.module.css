@@ -1,0 +1,50 @@
+.formInput {
+  margin-bottom: 15px;
+  border: 1px solid #c5c5c5;
+  width: 288px;
+  height: 40px;
+  border-radius: 6px;
+}
+.formInput:hover,
+.formInput:focus {
+  outline: 3px solid rgb(96, 110, 218);
+}
+.numberInputId:hover,
+.numberInputId:focus {
+  outline: 3px solid rgb(96, 110, 218);
+}
+.buttonForm {
+  border: transparent;
+  box-shadow: 2px 2px 4px rgba(126, 147, 255, 0.2);
+  border-radius: 6px;
+  color: black;
+  font-weight: 600;
+  margin-top: 15px;
+  background: #48b9ea;
+
+  width: 288px;
+  height: 40px;
+}
+.buttonForm:hover,
+.buttonForm:focus {
+  color: #fff;
+  outline: 3px solid rgb(96, 110, 218);
+}
+.formMain {
+  display: block;
+  height: 300px;
+  width: 300px;
+  background: #f4f4f4;
+  border: 1px solid #c5c5c5;
+  border-radius: 6px;
+  padding: 25px;
+}
+.label {
+  align-self: stretch;
+  display: block;
+  flex-grow: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 14px;
+  width: 288px;
+}
