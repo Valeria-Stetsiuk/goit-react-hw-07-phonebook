@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
-import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { addPhoneContact } from '../../redux/contactSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from 'redux/operations';
+import { selectContacts } from 'redux/selectors';
 import s from './ContactForm.module.css';
 
 export const Form = () => {
@@ -26,6 +26,9 @@ export const Form = () => {
         return;
     }
   };
+
+  const oldContacts = useSelector(selectContacts);
+
   const handleSubmit = event => {
     event.preventDefault();
 
@@ -34,7 +37,17 @@ export const Form = () => {
       number,
     };
 
-    dispatch(addPhoneContact(newContactData));
+    if (
+      oldContacts.some(
+        contact =>
+          contact.name.toLowerCase() === newContactData.name.toLowerCase()
+      )
+    ) {
+      alert(`contact with ${newContactData.name} has already been created`);
+      return;
+    }
+
+    dispatch(addContact(newContactData));
     setName('');
     setNumber('');
   };
@@ -75,8 +88,4 @@ export const Form = () => {
       <button className={s.buttonForm}>Add contact</button>
     </form>
   );
-};
-
-Form.propTypes = {
-  addContact: PropTypes.func.isRequired,
 };

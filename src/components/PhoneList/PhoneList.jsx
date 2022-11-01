@@ -1,18 +1,20 @@
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { deletePhoneContact } from '../../redux/contactSlice';
-import { selectPhoneContacts, selectedFilter } from '../../redux/selectors';
+import { deleteContact } from 'redux/operations';
+import {
+  selectRenderContacts,
+  selectIsLoading,
+  selectError,
+} from '../../redux/selectors';
 import s from './PhoneList.module.css';
 
 export const PhoneList = () => {
-  const phoneContacts = useSelector(selectPhoneContacts);
-  const filter = useSelector(selectedFilter);
+  const renderContacts = useSelector(selectRenderContacts);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
   const dispatch = useDispatch();
-  const renderContacts = phoneContacts.filter(({ name }) =>
-    name.toLowerCase().includes(filter.toLowerCase())
-  );
   return (
     <>
+      {error && <p>Sorry!The action was not completed, try again later.</p>}
       <ul className={s.phoneList}>
         {!renderContacts.length && <p>There are no contacts found!</p>}
         {renderContacts.length > 0 &&
@@ -24,7 +26,8 @@ export const PhoneList = () => {
                 <button
                   className={s.buttonDelete}
                   type="button"
-                  onClick={() => dispatch(deletePhoneContact(id))}
+                  disabled={isLoading}
+                  onClick={() => dispatch(deleteContact(id))}
                 >
                   Delete
                 </button>
@@ -34,8 +37,4 @@ export const PhoneList = () => {
       </ul>
     </>
   );
-};
-PhoneList.propTypes = {
-  phoneContacts: PropTypes.array,
-  onDelete: PropTypes.func,
 };
